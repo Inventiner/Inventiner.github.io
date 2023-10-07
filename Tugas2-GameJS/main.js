@@ -1,14 +1,19 @@
 import {Pemain} from './Pemain.js'
-import {Peluru} from './peluru.js'
 import {InputHandlerKB} from './inputkb.js'
 import {InputHandlerM} from './inputm.js'
 import {ControllerPeluru} from './controllerPeluru.js'
+import {ControllerMusuh} from './controllerMusuh.js'
+import {timer} from './timer.js'
+
+// TODO: MUSUH, POIN, TIMER?, SUARA, ANIMASI_TAMBAHAN?, BUG-FIX dan Bug-fixing dan bug-fixing dan jangan lupa bugfix
 
 window.addEventListener('load', function() {
-    /**@type {HTMLButtonElement} */ const button = document.getElementById('start');
-    
+    const button = document.getElementById('start');
+    const utility = this.document.getElementById('utility');
+
     button.addEventListener('click', function() {
         button.style.display = 'none';
+        utility.style.visibility = 'visible';
 
         const canvas = /** @type {HTMLCanvasElement} */ document.getElementById('primary');
         canvas.style.border = "2px solid black";
@@ -20,21 +25,24 @@ window.addEventListener('load', function() {
             constructor(width, height) {
                 this.width = width;
                 this.height = height;
-                this.controller1 = new ControllerPeluru(this.canvas);
+                this.timer = new timer();
+                this.controller1 = new ControllerPeluru();
+                this.controller2 = new ControllerMusuh(this);
                 this.pemain = new Pemain(this, this.controller1);
-                this.peluru = new Peluru(this.pemain);
                 this.InputHandlerKB = new InputHandlerKB();
                 this.InputHandlerM = new InputHandlerM(canvas);
-                
+                this.controller2.spawn(20);
             }
             update() {
                 this.pemain.update(this.InputHandlerKB.keys, this.InputHandlerM.mouse);
                 this.controller1.update();
+                this.timer.tick();
             }
             draw(context) {
                 this.bg = document.getElementById('bgimage')
                 ctx.drawImage(this.bg, 0, 0, 800, 800);
                 this.controller1.draw(context);
+                this.controller2.draw(context);
                 this.pemain.draw(context);
             }
         }

@@ -1,22 +1,65 @@
 export class Peluru {
-    constructor(pemain) {
+    constructor(pemain, heading) {
         this.pemain = pemain;
         this.width = 64;
         this.height = 64;
         this.count = 0;
-        this.x = this.pemain.x;
-        this.y = this.pemain.y;
-        this.asset = document.getElementById('peluru');
-    }
+        this.vx = 0; // perubahan x
+        this.vy = 0; // perubahan y
+        this.oub = 0; // mengecek out of bound
+        this.heading = heading;
+        this.asset = document.getElementById('peluruU');
 
-    update() {
-    }
+        this.animation = document.getElementById('tembak');
+        this.peluruU = document.getElementById('peluruU');
+        this.peluruR = document.getElementById('peluruR');
+        this.peluruD = document.getElementById('peluruD');
+        this.peluruL = document.getElementById('peluruL');
 
-    draw(/** @type {CanvasRenderingContext2D} */ context, state){
-        console.log("drawing")
-        if(state == 1)
-        {
-            context.drawImage(this.asset, this.x, this.y--);
+        switch(this.heading) {
+            case 1:
+                this.x = this.pemain.x;
+                this.y = this.pemain.y - (this.pemain.height/2 + this.pemain.height/20);
+                this.vy = -1.5;
+                this.asset = this.peluruU;
+                break;
+            case 2:
+                this.x = this.pemain.x + (this.pemain.width/2 + this.pemain.width/20);
+                this.y = this.pemain.y;
+                this.vx = 1.5;
+                this.asset = this.peluruR;
+                break;
+            case 3:
+                this.x = this.pemain.x;
+                this.y = this.pemain.y + (this.pemain.height/2 + this.pemain.height/20);
+                this.vy = 1.5;
+                this.asset = this.peluruD;
+                break;
+            case 4:
+                this.x = this.pemain.x - (this.pemain.width/2 + this.pemain.width/20);
+                this.y = this.pemain.y;
+                this.vx = -1.5;
+                this.asset = this.peluruL;
+                break;
+            default:
+                break;
         }
+    }
+
+    outofbound() {
+        if(this.x <= (0 - this.width) || this.y <= (0 - this.height) || this.y >= this.pemain.game.height || this.x >= this.pemain.game.width) {
+            return true;
+        }
+        return false;
+    }
+
+    draw(/** @type {CanvasRenderingContext2D} */ context){
+        this.x += this.vx;
+        this.y += this.vy;
+        context.drawImage(this.asset, this.x, this.y, 64, 64);
+    }
+
+    drawAnim(context){
+
     }
 }

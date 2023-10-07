@@ -13,24 +13,56 @@
         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis consequat nisi eget pellentesque. Praesent consectetur suscipit purus, sit amet viverra neque gravida ut. Cras sagittis ullamcorper vehicula. Mauris sed iaculis urna. Maecenas convallis tempor egestas. Mauris efficitur commodo quam vel sagittis. Donec dignissim, orci in congue convallis, libero diam vestibulum magna, vel volutpat nibh ligula id ipsum. Integer a odio commodo, posuere lorem nec, maximus dolor. Mauris vitae pulvinar neque. </p>
         <button id="start"> Click to start Game </button>
     </div>
+    <table id="utility">
+        <tr>
+            <th>Timer</th>
+            <th>Poin</th>
+            <th>Level</th>
+        </tr>
+        <tr>
+            <th><div><span class="digit" id="minute">00</span><span class="digit">:</span><span class="digit" id="second">00</span></div></th>
+            <th class="digit" id="point">0</th>
+            <th class="digit" id="level">1</th>
+        </tr>
+    </table>
     <div id="game">
         <canvas id="primary"></canvas>
         
+        <!-- load asset tank -->
         <img class ="asset" id="tankUp" src="Assets/Beta-TankUp.png">
         <img class ="asset" id="tankUp2" src="Assets/Beta-TankUp2.png">
+        <img class ="asset" id="tankUpSht" src="Assets/Beta-TankUp-Shoot.png">
+
         <img class ="asset" id="tankDown" src="Assets/Beta-TankDown.png">
         <img class ="asset" id="tankDown2" src="Assets/Beta-TankDown2.png">
+        <img class ="asset" id="tankDownSht" src="Assets/Beta-TankDown-Shoot.png">
+
         <img class ="asset" id="tankLeft" src="Assets/Beta-TankLeft.png">
         <img class ="asset" id="tankLeft2" src="Assets/Beta-TankLeft2.png">
+        <img class ="asset" id="tankLeftSht" src="Assets/Beta-TankLeft-Shoot.png">
+
         <img class ="asset" id="tankRight" src="Assets/Beta-TankRight.png">
         <img class ="asset" id="tankRight2" src="Assets/Beta-TankRight2.png">
+        <img class ="asset" id="tankRightSht" src="Assets/Beta-TankRight-Shoot.png">
+        
+        <!-- load asset bg -->
         <img class ="asset" id="bgimage" src="Assets/Background.png">
-        <img class ="asset" id="peluru" src="Assets/Heavy_Shell.png">
+        
+        <!-- load asset musuh -->
+        <img class ="asset" id="enemy" src="Assets/EnemyPlaceholder.png">
 
+        <!-- load asset peluru -->
+        <img class ="asset" id="tembak" src="Assets/Shoot.png">
+        <img class ="asset" id="peluruU" src="Assets/Heavy_ShellU.png">
+        <img class ="asset" id="peluruR" src="Assets/Heavy_ShellR.png">
+        <img class ="asset" id="peluruD" src="Assets/Heavy_ShellD.png">
+        <img class ="asset" id="peluruL" src="Assets/Heavy_ShellL.png">
+        
     </div>
-    <div>
+    <div style="margin-top: 2px;">
         <h3>Referensi Asset Yang Digunakan: </h3>
         <p><a href="https://free-game-assets.itch.io/free-2d-tank-game-assets">https://free-game-assets.itch.io/free-2d-tank-game-assets</a></p>
+        <p><a href="https://krishna-palacio.itch.io/minifantasy-forgotten-plains">https://krishna-palacio.itch.io/minifantasy-forgotten-plains</a></p>
     </div>
         
     <script type="module" src="main.js"></script>

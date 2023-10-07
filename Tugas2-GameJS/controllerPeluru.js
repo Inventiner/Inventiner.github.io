@@ -3,17 +3,18 @@ import {Peluru} from './peluru.js'
 export class ControllerPeluru {
     ArPeluru = [];
     timer = 0;
-    state = 0;
 
-    constructor(canvas) {
-        this.canvas = canvas;
+    constructor() {
     }
 
-    tembak(pemain, state) {
+    tembak(pemain, heading) {
         if(this.timer <= 0){
-            this.ArPeluru.push(new Peluru(pemain));
-            this.timer = 80;
-            this.state = state;
+            this.ArPeluru.push(new Peluru(pemain, heading));
+            this.timer = 60;
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
@@ -22,8 +23,13 @@ export class ControllerPeluru {
     }
 
     draw(ctx){
-        console.log(this.ArPeluru);
-        // this.ArPeluru.forEach((Peluru) => console.log(Peluru));
-        this.ArPeluru.forEach((Peluru) => Peluru.draw(ctx, this.state));
+        // console.log(this.ArPeluru); // debugger
+
+        this.ArPeluru.forEach((Peluru) => {
+            Peluru.draw(ctx);
+            if(Peluru.outofbound()){
+                this.ArPeluru.splice(Peluru, 1);
+            }
+        });
     }
 }
