@@ -3,14 +3,16 @@ import {Peluru} from './peluru.js'
 export class ControllerPeluru {
     ArPeluru = [];
     timer = 0;
+    
 
-    constructor() {
+    constructor(collision) {
+        this.collision = collision;
     }
 
     tembak(pemain, heading) {
         if(this.timer <= 0){
             this.ArPeluru.push(new Peluru(pemain, heading));
-            this.timer = 60;
+            this.timer = 35;  // cooldown sebelum menembak lagi
             return true;
         }
         else {
@@ -20,6 +22,7 @@ export class ControllerPeluru {
 
     update() {
         this.timer--;
+        this.collision.updatebullet(this.ArPeluru);
     }
 
     draw(ctx){

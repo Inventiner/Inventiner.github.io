@@ -8,6 +8,7 @@ export class Pemain {
 
         this.state = 1;
         this.controller1 = controller1;
+        this.speed = 1.5;
 
         this.x = this.game.width / 2 - this.width / 2;
         this.y = this.game.height / 2 - this.height / 2;
@@ -29,23 +30,30 @@ export class Pemain {
         this.tankRight = document.getElementById('tankRight');
         this.tankRight2 = document.getElementById('tankRight2');
         this.tankRightSht = document.getElementById('tankRightSht');
+
+        this.shoot = new Audio('./Assets/shoot.wav')
+        this.shoot.volume = 0.1;
+
+        this.tanksound = new Audio('./Assets/tank.wav')
+        this.tanksound.volume = 0.05;
     }
 
-    update(input, mouse) {
+    update(input, mouse, collision) {
         this.count += 1;
         this.cooldown -= 1;
+        this.collision = collision;
+
         if(this.cooldown <= 0)
         {
             this.asset = this.tempImg;
         }
         
         if(input.includes(' ') || mouse.includes('LeftClick')) {
-            console.log("shoot");
             this.success = this.controller1.tembak(this, this.state);
-            console.log(this.success);
             if(this.success) {
-                console.log("success shoot again")
-                this.cooldown = 15;
+                this.shoot.currentTime = 0;
+                this.shoot.play();
+                this.cooldown = 10;
                 switch(this.state) {
                     case 1:
                         this.asset = this.tankUpSht;
@@ -71,7 +79,10 @@ export class Pemain {
 
         if (input.includes('ArrowDown') || input.includes('s') || input.includes('S')) {
             this.state = 3;
-            this.y++;
+            this.y += this.speed;
+            this.tanksound.currentTime = 0;
+            this.tanksound.play();
+
             if(this.y > this.game.height - this.height)
             {
                 this.y = this.game.height - this.height;
@@ -92,7 +103,9 @@ export class Pemain {
 
         else if(input.includes('ArrowUp') || input.includes('w') || input.includes('W')) {
             this.state = 1;
-            this.y--;  
+            this.y -= this.speed; 
+            this.tanksound.play();
+
             if(this.y < 0)
             {
                 this.y = 0;
@@ -113,7 +126,8 @@ export class Pemain {
 
         else if(input.includes('ArrowLeft') || input.includes('a') || input.includes('A')) {
             this.state = 4;
-            this.x--;
+            this.x -= this.speed;
+            this.tanksound.play();
 
             if(this.x < 0)
             {
@@ -135,7 +149,8 @@ export class Pemain {
 
         else if(input.includes('ArrowRight') || input.includes('d') || input.includes('D')) {
             this.state = 2;
-            this.x++;
+            this.x += this.speed;
+            this.tanksound.play();
 
             if(this.x > this.game.width - this.width)
             {
@@ -154,10 +169,11 @@ export class Pemain {
                 this.tempImg = this.tankRight;
             }
         }
+
+        this.collision.updateplayer(this.x, this.y);
     }
 
     draw( /** @type {CanvasRenderingContext2D} */ context){
-        // context.drawImage();
         context.drawImage(this.asset, this.x, this.y, 64, 64);
     }
 }

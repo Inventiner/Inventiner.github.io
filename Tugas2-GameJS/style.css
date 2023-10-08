@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+div
+{
+    padding-left: 20px;
+}
+
 #primary {
     position: relative;
     left: 50%;

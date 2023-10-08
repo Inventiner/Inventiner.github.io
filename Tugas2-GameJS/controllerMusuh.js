@@ -2,25 +2,30 @@ import {Musuh} from "./Musuh.js"
 
 export class ControllerMusuh {
     Armusuh = [];
-    constructor(game){
+    constructor(game, collision){
         this.game = game;
+        this.collision = collision;
     }
 
-    spawn(value){
+    spawn(value, type){
         for(let i = 0; i < value; i++)
         {
-            this.Armusuh.push(new Musuh())
+            this.Armusuh.push(new Musuh(type))
         }
     }
 
-    draw(ctx){
-        console.log(this.Armusuh);
-        // this.ArPeluru.forEach((Peluru) => console.log(Peluru));
+    update(){
+        this.collision.updateEnemy(this.Armusuh);
+    }
+
+    draw(ctx, pemain, point){
+        this.point = point;
+        // console.log(this.Armusuh);
+        this.Armusuh = this.collision.enemyCollision(this, this.point);
+        this.Armusuh = this.collision.playerCollision(this, this.point);
+
         this.Armusuh.forEach((Musuh) => {
-            Musuh.draw(ctx);
-            // if(Musuh.outofbound()){
-            //     this.ArPeluru.splice(Peluru, 1);
-            // }
+            Musuh.draw(ctx, pemain);
         });
     }
     

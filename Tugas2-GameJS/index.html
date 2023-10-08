@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work In Progress Title Game</title>
+    <title>Survive The Horde</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="title">
 
         <h1> Survive The Horde </h1>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis consequat nisi eget pellentesque. Praesent consectetur suscipit purus, sit amet viverra neque gravida ut. Cras sagittis ullamcorper vehicula. Mauris sed iaculis urna. Maecenas convallis tempor egestas. Mauris efficitur commodo quam vel sagittis. Donec dignissim, orci in congue convallis, libero diam vestibulum magna, vel volutpat nibh ligula id ipsum. Integer a odio commodo, posuere lorem nec, maximus dolor. Mauris vitae pulvinar neque. </p>
+        <p> Setelah sebuah petualangan epic, tiba-tiba Anda mendapati diri Anda berada di tengah-tengah wabah zombie yang mengerikan, dengan satu-satunya tempat perlindungan yang tersisa yaitu tank yang tangguh anda harus bertahan hidup selama mungkin selagi melawan zombie-zombie yang terus bermunculan. Seberapa lama anda dapat bertahan hidup? <br/>
+            <br/> 
+            Control: <br/> 
+            WASD / Arrow Key = Menggerakan tank, Spacebar / LMB = Menembak <br/>
+            (Game ini dibuat dengan menggunakan canvas berukuran 800px x 800px, disarankan untuk zoom out dan mencoba untuk memasuki fullscreen untuk pengalaman yang lebih baik) </p>
         <button id="start"> Click to start Game </button>
     </div>
     <table id="utility">
@@ -18,11 +22,13 @@
             <th>Timer</th>
             <th>Poin</th>
             <th>Level</th>
+            <th>Nyawa</th>
         </tr>
         <tr>
             <th><div><span class="digit" id="minute">00</span><span class="digit">:</span><span class="digit" id="second">00</span></div></th>
-            <th class="digit" id="point">0</th>
-            <th class="digit" id="level">1</th>
+            <th><div><span class="digit" id="point">0/100</span></div></th>
+            <th><div><span class="digit" id="level">1</span></div></th>
+            <th><div><span class="digit" id="lives">10</span></div></th>
         </tr>
     </table>
     <div id="game">
@@ -47,12 +53,21 @@
         
         <!-- load asset bg -->
         <img class ="asset" id="bgimage" src="Assets/Background.png">
+        <img class ="asset" id="bgimagesiang" src="Assets/BackgroundSiang.png">
+        <img class ="asset" id="bgimagesore" src="Assets/BackgroundSore.png">
+        <img class ="asset" id="bgimagemalam" src="Assets/BackgroundMalam.png">
         
         <!-- load asset musuh -->
-        <img class ="asset" id="enemy" src="Assets/EnemyPlaceholder.png">
+        <img class ="asset" id="enemyU" src="Assets/ZombieU.png">
+        <img class ="asset" id="enemyR" src="Assets/ZombieR.png">
+        <img class ="asset" id="enemyD" src="Assets/ZombieD.png">
+        <img class ="asset" id="enemyL" src="Assets/ZombieL.png">
+        <img class ="asset" id="enemyU2" src="Assets/ZombieU2.png">
+        <img class ="asset" id="enemyR2" src="Assets/ZombieR2.png">
+        <img class ="asset" id="enemyD2" src="Assets/ZombieD2.png">
+        <img class ="asset" id="enemyL2" src="Assets/ZombieL2.png">
 
         <!-- load asset peluru -->
-        <img class ="asset" id="tembak" src="Assets/Shoot.png">
         <img class ="asset" id="peluruU" src="Assets/Heavy_ShellU.png">
         <img class ="asset" id="peluruR" src="Assets/Heavy_ShellR.png">
         <img class ="asset" id="peluruD" src="Assets/Heavy_ShellD.png">
@@ -61,8 +76,12 @@
     </div>
     <div style="margin-top: 2px;">
         <h3>Referensi Asset Yang Digunakan: </h3>
-        <p><a href="https://free-game-assets.itch.io/free-2d-tank-game-assets">https://free-game-assets.itch.io/free-2d-tank-game-assets</a></p>
-        <p><a href="https://krishna-palacio.itch.io/minifantasy-forgotten-plains">https://krishna-palacio.itch.io/minifantasy-forgotten-plains</a></p>
+        <p>Sumber Sprite Tank: <a href="https://free-game-assets.itch.io/free-2d-tank-game-assets">https://free-game-assets.itch.io/free-2d-tank-game-assets</a></p>
+        <p>Sumber Sprite Zombie: <a href="https://chasersgaming.itch.io/rpg-masset-character-zombie-nes">https://chasersgaming.itch.io/rpg-masset-character-zombie-nes</a></p>
+        <p>Sumber Bg Image: <a href="https://krishna-palacio.itch.io/minifantasy-forgotten-plains">https://krishna-palacio.itch.io/minifantasy-forgotten-plains</a></p>
+        <p>Sumber Bg Music: <a href="https://leohpaz.itch.io/minifantasy-forgotten-plains-sfx-pack">https://leohpaz.itch.io/minifantasy-forgotten-plains-sfx-pack</a></p>
+        <p>Sumber Sfx tank: <a href="https://www.freesfx.co.uk/Category/Tanks/119">https://www.freesfx.co.uk/Category/Tanks/119</a></p>
+        <p>Sfx Generated from: <a href="https://www.bfxr.net/">https://www.bfxr.net/</a></p>
     </div>
         
     <script type="module" src="main.js"></script>

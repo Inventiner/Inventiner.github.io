@@ -24,7 +24,7 @@ export class timer{
 
             this.updateS.innerHTML = this.secstring;
         }
-        if(this.seconds >= 60)
+        if(this.seconds >= 59)
         {
             this.seconds = 0;
             this.updateS.innerHtML = "00";
