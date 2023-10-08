@@ -80,7 +80,6 @@ export class Pemain {
         if (input.includes('ArrowDown') || input.includes('s') || input.includes('S')) {
             this.state = 3;
             this.y += this.speed;
-            this.tanksound.currentTime = 0;
             this.tanksound.play();
 
             if(this.y > this.game.height - this.height)

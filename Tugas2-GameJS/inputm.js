@@ -7,7 +7,6 @@ export class InputHandlerM {
                 case 0:
                     e.preventDefault();
                     this.mouse.push('LeftClick');
-                    console.log(this.mouse);
                     break;
                 default:
                     break;
@@ -23,7 +22,6 @@ export class InputHandlerM {
                 case 0:
                     e.preventDefault();
                     this.mouse.splice(this.mouse.indexOf('LeftClick'), 1);
-                    console.log(this.mouse);
                 default:
                     break;
             }

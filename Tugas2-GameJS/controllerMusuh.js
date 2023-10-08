@@ -20,7 +20,6 @@ export class ControllerMusuh {
 
     draw(ctx, pemain, point){
         this.point = point;
-        // console.log(this.Armusuh);
         this.Armusuh = this.collision.enemyCollision(this, this.point);
         this.Armusuh = this.collision.playerCollision(this, this.point);
 

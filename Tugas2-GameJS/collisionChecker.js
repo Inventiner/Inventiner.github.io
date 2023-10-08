@@ -29,7 +29,6 @@ export class collisionChecker{
 
     updateEnemy(Armusuh){
         this.enemy = Armusuh;
-        console.log(this.enemy);
     }
 
     updateplayer(x, y){
