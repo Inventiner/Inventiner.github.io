@@ -98,13 +98,11 @@ export class Musuh{
             }
         }
     }
-
+    
     draw(ctx, pemain){
         this.getshortestpath(pemain);
         this.x += this.vx;
         this.y += this.vy;
         ctx.drawImage(this.asset, this.x, this.y, this.width, this.height);
     }
-
-
 }

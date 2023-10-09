@@ -31,6 +31,7 @@ export class point{
                 setTimeout(() => window.location.reload(), 3000);
             } else {
                 this.lives = 3;
+                this.live.innerHTML = this.lives.toString();
             }
         }
 

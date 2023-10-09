@@ -18,13 +18,16 @@ export class timer{
             if(this.seconds < 10) {
                 this.secstring = "0" + this.seconds.toString();
             }
+            else if(this.seconds == 60) {
+                this.secstring = "00";
+            }
             else {
                 this.secstring = this.seconds.toString();
             }
 
             this.updateS.innerHTML = this.secstring;
         }
-        if(this.seconds >= 59)
+        if(this.seconds >= 60)
         {
             this.seconds = 0;
             this.updateS.innerHtML = "00";
