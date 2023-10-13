@@ -5,33 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survive The Horde</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="title">
 
+    
+</head>
+<body style="background-color: rgb(222,222, 222);">
+    
+    <div id="title">
         <h1> Survive The Horde </h1>
-        <p> Setelah sebuah petualangan epic, tiba-tiba Anda mendapati diri Anda berada di tengah-tengah wabah zombie yang mengerikan, dengan satu-satunya tempat perlindungan yang tersisa yaitu tank yang tangguh anda harus bertahan hidup selama mungkin selagi melawan zombie-zombie yang terus bermunculan. Seberapa lama anda dapat bertahan hidup? <br/>
+        <p> Setelah sebuah petualangan epic, tiba-tiba Anda mendapati diri Anda berada di tengah-tengah wabah zombie yang mengerikan, dengan satu-satunya tempat perlindungan yang tersisa yaitu sebuah tank yang sudah lama terbengkelai. Anda harus bertahan hidup selama mungkin selagi melawan zombie-zombie yang terus bermunculan. Seberapa lama anda dapat bertahan hidup? <br/>
             <br/> 
             Control: <br/> 
             WASD / Arrow Key = Menggerakan tank, Spacebar / LMB = Menembak <br/>
-            (Game ini dibuat dengan menggunakan canvas berukuran 800px x 800px, disarankan untuk zoom out dan mencoba untuk memasuki fullscreen untuk pengalaman yang lebih baik) </p>
-        <button id="start"> Click to start Game </button>
+            (Disarankan untuk zoom out atau memasuki fullscreen (F11) sehingga canvas terlihat untuk pengalaman bermain yang lebih baik!) </p>
     </div>
-    <table id="utility">
-        <tr>
-            <th>Timer</th>
-            <th>Poin</th>
-            <th>Level</th>
-            <th>Nyawa</th>
-        </tr>
-        <tr>
-            <th><div><span class="digit" id="minute">00</span><span class="digit">:</span><span class="digit" id="second">00</span></div></th>
-            <th><div><span class="digit" id="point">0/100</span></div></th>
-            <th><div><span class="digit" id="level">1</span></div></th>
-            <th><div><span class="digit" id="lives">10</span></div></th>
-        </tr>
-    </table>
+        
+    <div class="sticky">
+        <table id="utility">
+            <tr>
+                <th>Timer</th>
+                <th>Poin</th>
+                <th>Level</th>
+                <th>Nyawa</th>
+            </tr>
+            <tr>
+                <th><div><span class="digit" id="minute">00</span><span class="digit">:</span><span class="digit" id="second">00</span></div></th>
+                <th><div><span class="digit" id="point">0/100</span></div></th>
+                <th><div><span class="digit" id="level">1</span></div></th>
+                <th><div><span class="digit" id="lives">10</span></div></th>
+            </tr>
+        </table>
+    </div>
+        
     <div id="game">
+        <button id="start"> Click to start Game </button>
         <canvas id="primary"></canvas>
         
         <!-- load asset tank -->
@@ -56,6 +62,7 @@
         <img class ="asset" id="bgimagesiang" src="Assets/BackgroundSiang.png">
         <img class ="asset" id="bgimagesore" src="Assets/BackgroundSore.png">
         <img class ="asset" id="bgimagemalam" src="Assets/BackgroundMalam.png">
+        <img class ="asset" id="gameover" src="Assets/gameover.png">
         
         <!-- load asset musuh -->
         <img class ="asset" id="enemyU" src="Assets/ZombieU.png">
@@ -73,15 +80,26 @@
         <img class ="asset" id="peluruD" src="Assets/Heavy_ShellD.png">
         <img class ="asset" id="peluruL" src="Assets/Heavy_ShellL.png">
         
+        <!-- load asset explosion -->
+        <img class ="asset" id="explode1" src="Assets/Explosion_A.png">
+        <img class ="asset" id="explode2" src="Assets/Explosion_B.png">
+        <img class ="asset" id="explode3" src="Assets/Explosion_C.png">
+        <img class ="asset" id="explode4" src="Assets/Explosion_D.png">
+        <img class ="asset" id="explode5" src="Assets/Explosion_E.png">
+        <img class ="asset" id="explode6" src="Assets/Explosion_F.png">
+        <img class ="asset" id="explode7" src="Assets/Explosion_G.png">
+        <img class ="asset" id="explode8" src="Assets/Explosion_H.png">
     </div>
-    <div style="margin-top: 2px;">
+
+    <div id="reference">
         <h3>Referensi Asset Yang Digunakan: </h3>
-        <p>Sumber Sprite Tank: <a href="https://free-game-assets.itch.io/free-2d-tank-game-assets">https://free-game-assets.itch.io/free-2d-tank-game-assets</a></p>
-        <p>Sumber Sprite Zombie: <a href="https://chasersgaming.itch.io/rpg-masset-character-zombie-nes">https://chasersgaming.itch.io/rpg-masset-character-zombie-nes</a></p>
-        <p>Sumber Bg Image: <a href="https://krishna-palacio.itch.io/minifantasy-forgotten-plains">https://krishna-palacio.itch.io/minifantasy-forgotten-plains</a></p>
-        <p>Sumber Bg Music: <a href="https://leohpaz.itch.io/minifantasy-forgotten-plains-sfx-pack">https://leohpaz.itch.io/minifantasy-forgotten-plains-sfx-pack</a></p>
-        <p>Sumber Sfx tank: <a href="https://www.freesfx.co.uk/Category/Tanks/119">https://www.freesfx.co.uk/Category/Tanks/119</a></p>
-        <p>Sfx Generated from: <a href="https://www.bfxr.net/">https://www.bfxr.net/</a></p>
+        <p>Sumber Sfx tank: <a href="https://www.freesfx.co.uk/Category/Tanks/119" target="_blank">https://www.freesfx.co.uk/Category/Tanks/119</a></p>
+        <p>Sfx Generated from: <a href="https://www.bfxr.net/" target="_blank">https://www.bfxr.net/</a></p>
+        <p>Game Over Sprite: <a href="https://www.freepik.com/free-vector/game-cartoon-text-effect-editable-comic-funny-text-style_29126095.htm" target="_blank">Image by NACreative</a> on Freepik</p>
+        <iframe height="167" frameborder="0" src="https://itch.io/embed/438753" width="552"><a href="https://free-game-assets.itch.io/free-2d-tank-game-assets">Free 2D Tank Game Assets by Free Game Assets (GUI, Sprite, Tilesets)</a></iframe>
+        <iframe src="https://itch.io/embed/727896" width="552" height="167" frameborder="0"><a href="https://chasersgaming.itch.io/rpg-masset-character-zombie-nes">RPG Asset Character &#039;Zombie&#039; NES by chasersgaming</a></iframe>
+        <iframe frameborder="0" src="https://itch.io/embed/667964" width="552" height="167"><a href="https://krishna-palacio.itch.io/minifantasy-forgotten-plains">Minifantasy - Forgotten Plains by Krishna Palacio</a></iframe>
+        <iframe frameborder="0" src="https://itch.io/embed/1634003" width="552" height="167"><a href="https://leohpaz.itch.io/minifantasy-forgotten-plains-sfx-pack">Minifantasy - Forgotten Plains Audio Pack by Leohpaz</a></iframe>
     </div>
         
     <script type="module" src="main.js"></script>

@@ -1,5 +1,6 @@
 export class point{
-    constructor(){
+    constructor(game){
+        this.game = game;
         this.base = 75;
         this.target = 100;
         this.poin = 0;
@@ -19,19 +20,30 @@ export class point{
 
         this.gameover = new Audio('./Assets/gameover.wav')
         this.gameover.volume = 0.15;
+
+        this.cheat = new Audio('./Assets/cheat.wav')
+        this.cheat.volume = 0.15;
     }
 
-    hit(controller) {
+    hit(controller, context) {
         this.lives--;
         this.live.innerHTML = this.lives.toString();
+        this.ctx = context;
+
+        this.ctx.fillStyle = 'rgba(242, 38, 19, 0.2)';
+        this.ctx.fillRect(0, 0, 800, 800);
+
         if(this.lives == 0) {
             this.gameover.currentTime = 0;
-            this.gameover.play();
             if(window.confirm("Gameover! Do you want to try again from the start?\n click yes to retry or click cancel to cheat in more lives!")) {
-                setTimeout(() => window.location.reload(), 3000);
+                this.gameover.play();
+                this.game.stop();
             } else {
                 this.lives = 3;
                 this.live.innerHTML = this.lives.toString();
+                this.game.resetinput();
+                this.cheat.currentTime = 0;
+                this.cheat.play();
             }
         }
 
@@ -61,8 +73,11 @@ export class point{
     nextlevel(controller) {
         this.spawn = (this.target - this.poin)/10;
         this.fast = Math.floor(Math.random() * (this.spawn)/2);
-        this.normal = this.spawn - this.fast;
+        this.slow = Math.floor(Math.random() * (this.spawn)/2);
+        this.normal = this.spawn - this.fast - this.slow;
+        
         this.spawner = controller;
+        this.spawner.spawn(this.slow, 3);
         this.spawner.spawn(this.fast, 2);
         this.spawner.spawn(this.normal, 1);
     }

@@ -27,4 +27,8 @@ export class InputHandlerM {
             }
         });
     }
+
+    reset(){
+        this.mouse = [];
+    }
 }

@@ -1,5 +1,5 @@
 export class InputHandlerKB {
-    constructor(){
+    constructor() {
         this.keys = [];
         
         window.addEventListener('keydown', e =>{
@@ -7,9 +7,11 @@ export class InputHandlerKB {
             e.key === 'ArrowUp'    || e.key === 'W' || e.key === 'w' ||
             e.key === 'ArrowLeft'  || e.key === 'A' || e.key === 'a' ||
             e.key === 'ArrowRight' || e.key === 'D' || e.key === 'd' ||
-            e.key === ' ') && this.keys.indexOf(e.key) === -1) {
+            e.key === ' ')) {
                 e.preventDefault();
-                this.keys.push(e.key);
+                if(this.keys.indexOf(e.key) === -1) {
+                    this.keys.push(e.key);
+                }
             }
         });
 
@@ -22,5 +24,9 @@ export class InputHandlerKB {
                 this.keys.splice(this.keys.indexOf(e.key), 1);
             }
         });
+    }
+
+    reset(){
+        this.keys = [];
     }
 }

@@ -6,7 +6,7 @@ export class collisionChecker{
         this.killmon = new Audio('./Assets/Enemyhit.wav')
         this.killmon.volume = 0.15;
         this.hit = new Audio('./Assets/Hit.wav')
-        this.hit.volume = 0.15;
+        this.hit.volume = 0.25;
 
         this.ctx = ctx;
         this.pemainx = 0;
@@ -45,13 +45,14 @@ export class collisionChecker{
                 (Musuh.x <= this.pemainx + this.pemainwidth && Musuh.y + this.musuhheight >= this.pemainy) &&
                 (Musuh.x + this.musuhwidth >= this.pemainx && Musuh.y + this.musuhwidth >= this.pemainy)) {
                     this.enemy.splice(this.enemy.indexOf(Musuh), 1);
-                    this.point.hit(controller);
+                    this.point.hit(controller, this.ctx);
                     this.hit.currentTime = 0;
                     this.hit.play();
-                    throw new Error("break");
+                    throw new Error("Stop");
                 }
             });
         } catch (error) {
+            
         }
 
         return this.enemy;
@@ -72,13 +73,13 @@ export class collisionChecker{
                         this.killmon.currentTime = 0;
                         this.killmon.play();
                         
-                        throw new Error("break");
+                        throw new Error("Stop");
                     }
                 });
             });
         } catch (error) {
+    
         }
-
         return this.enemy;
     }
 
