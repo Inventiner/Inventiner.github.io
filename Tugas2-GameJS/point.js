@@ -17,12 +17,15 @@ export class point{
 
         this.levelup = new Audio('./Assets/levelup.wav')
         this.levelup.volume = 0.15;
+        this.levelup.preload = 'auto';
 
         this.gameover = new Audio('./Assets/gameover.wav')
         this.gameover.volume = 0.15;
+        this.gameover.preload = 'auto';
 
         this.cheat = new Audio('./Assets/cheat.wav')
         this.cheat.volume = 0.15;
+        this.cheat.preload = 'auto';
     }
 
     hit(controller, context) {

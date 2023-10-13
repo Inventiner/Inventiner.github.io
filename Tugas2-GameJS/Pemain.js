@@ -33,9 +33,11 @@ export class Pemain {
 
         this.shoot = new Audio('./Assets/shoot.wav')
         this.shoot.volume = 0.1;
+        this.shoot.preload = 'auto';
 
         this.tanksound = new Audio('./Assets/tank.wav')
         this.tanksound.volume = 0.05;
+        this.tanksound.preload = 'auto';
     }
 
     update(input, mouse, collision) {

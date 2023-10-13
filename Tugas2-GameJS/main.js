@@ -71,10 +71,11 @@ window.addEventListener('load', function() {
                 this.death = false;
                 
                 //bgm music
-                this.bgm = new Audio('./Assets/FairFight.wav')
+                this.bgm = new Audio('./Assets/FairFight.mp3')
                 this.bgm.volume = 0.15;
                 this.bgm.loop = true;
                 this.bgm.play();
+                this.bgm.preload = 'auto';
                 
                 // first round enemy spawner
                 this.rndm1 = Math.floor(Math.random()*4);

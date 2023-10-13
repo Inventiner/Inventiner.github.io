@@ -5,8 +5,10 @@ export class collisionChecker{
     constructor(ctx){
         this.killmon = new Audio('./Assets/Enemyhit.wav')
         this.killmon.volume = 0.15;
+        this.killmon.preload = 'auto';
         this.hit = new Audio('./Assets/Hit.wav')
         this.hit.volume = 0.25;
+        this.hit.preload = 'auto';
 
         this.ctx = ctx;
         this.pemainx = 0;
