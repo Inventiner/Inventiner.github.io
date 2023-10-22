@@ -39,6 +39,29 @@ export class point{
         if(this.lives == 0) {
             this.gameover.currentTime = 0;
             if(window.confirm("Gameover! Do you want to try again from the start?\n click yes to retry or click cancel to cheat in more lives!")) {
+                fetch("https://ets-pemrograman-web-f.cyclic.app/scores/score", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        "nama": prompt("Please enter your name", "Nama Lengkap"),
+                        "score": this.point.toString(),
+                    }),
+                    redirect: 'follow',
+                }) .then(response => response.text())
+                .then(result => {
+                    console.log(result)
+                    this.result = JSON.parse(result);
+                    if(this.result.status == "success") {
+                        window.alert("Sign Up Berhasil, silahkan login!")
+                    }
+                    else{
+                        window.alert(this.result.error);
+                    }
+                })
+                .catch(error => console.log('error', error));
+                
                 this.gameover.play();
                 this.game.stop();
             } else {

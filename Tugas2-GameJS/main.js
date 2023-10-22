@@ -6,29 +6,26 @@ import {ControllerMusuh} from './controllerMusuh.js'
 import {timer} from './timer.js'
 import {collisionChecker} from './collisionChecker.js'
 import {point} from './point.js'
+import {register} from './register.js'
+import {login} from './login.js'
+import {scoreboard} from './scoreboard.js'
+
+if(sessionStorage.getItem("token") != null){
+    document.getElementById("login-bar").style.visibility = "hidden";
+    document.getElementById("status").style.visibility = "visible";
+    document.getElementById("status").style.maxHeight = "auto";
+}
 
 window.addEventListener('load', function() {
     const button = document.getElementById('start');
     const utility = document.getElementById('utility');
+    this.register = new register()
+    this.login = new login();
+    this.scoreboard = new scoreboard();
 
     button.addEventListener('click', function() {
         button.style.display = 'none';
         utility.style.visibility = 'visible';
-
-        const regisurl = 'https://reqres.in/api/register';
-        
-        fetch(regisurl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "email": "eve.holt@reqres.in",
-                "password": "pistol"
-            })
-        }) .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error));
 
         const canvas = /** @type {HTMLCanvasElement} */ document.getElementById('primary');
         canvas.style.border = "2px solid black";
@@ -184,6 +181,10 @@ window.addEventListener('load', function() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(game.gover, 0, 0, game.width, game.height);
             }
+        }
+
+        function tes(){
+            console.log(tes);
         }
         
         animate();

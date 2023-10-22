@@ -4,7 +4,65 @@
     box-sizing: border-box;
 }
 
+#status{
+    font-weight: bold;
+    padding-top: 8px;
+    margin-left: auto;
+    width: fit-content;
+    margin-right: auto;
+    align-content: center;
+    visibility: hidden;
+    max-height: 0;
+}
+
+#login{
+    width: auto;
+    height: 40px;
+    background-color: crimson;
+}
+
+#login-bar{
+    visibility: visible;
+    padding-top: 2px;
+    margin-left: auto;
+    width: fit-content;
+    margin-right: 3%;
+}
+
+#registerpage{
+    visibility: hidden;
+    position: fixed;
+    width: 100%; 
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3; 
+    cursor: pointer;
+    color: black;
+    display: block;
+}
+
+#registerform{
+    padding: 18px;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    background-color: white;
+    transform: translateY(50%);
+}
+
+#email, #password, #psw-repeat, #nama{
+    margin-bottom: 8px;
+    width: 98%;
+    border: 1px solid black;
+}
+
 #title{
+    font-size: 12pt;
     font-family: monospace;
     width: 80%;
     justify-self: auto;
@@ -42,7 +100,7 @@ div.sticky {
 }
 
 #utility {
-    background-color: rgba(239, 239, 240, 0.1);
+    background-color: rgba(239, 239, 239, 0.1);
     background-blend-mode: luminosity;
     visibility: hidden;
     margin-left: auto;
@@ -56,6 +114,16 @@ div.sticky {
     font-size: 25px;
 }
 
+#leaderboard {
+    background-color: rgba(210,210,210,1);
+    background-blend-mode: luminosity;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    align-self: center;
+    font-family: ui-rounded;
+}
+
 #game {
     width: 100%;
     height: 100%;
@@ -64,6 +132,11 @@ div.sticky {
 img.asset {
     display: none;
 }
+
+#nama1th, #score1th, #id1th, #nama2th, #score2th, #id2th, #nama3th, #score3th, #id3th , .lb {
+    border: 1px solid black;
+}
+
 
 #reference {
     margin-left: 2%;

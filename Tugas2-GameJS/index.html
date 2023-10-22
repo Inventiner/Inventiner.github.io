@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survive The Horde</title>
     <link rel="stylesheet" href="style.css">
-
-    
 </head>
 <body style="background-color: rgb(222,222, 222);">
-    
+    <div id="login">
+        <p id="status">Anda Sudah Login. <a href="#" id="logout">Log Out?</a> </p>
+        <form id="login-bar">
+            <strong><a id="register" href="#">Sign Up</a> Or login: </strong>
+            <input type="text" placeholder="Your Email" name="emaillogin" id="emaillogin" required>
+            <input type="password" placeholder="Your Password" name="passwordlogin" id="passwordlogin" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+            <input type="submit">
+        </form>
+    </div>
+
     <div id="title">
         <h1> Survive The Horde </h1>
         <p> Setelah sebuah petualangan epic, tiba-tiba Anda mendapati diri Anda berada di tengah-tengah wabah zombie yang mengerikan, dengan satu-satunya tempat perlindungan yang tersisa yaitu sebuah tank yang sudah lama terbengkelai. Anda harus bertahan hidup selama mungkin selagi melawan zombie-zombie yang terus bermunculan. Seberapa lama anda dapat bertahan hidup? <br/>
@@ -19,6 +26,28 @@
             (Disarankan untuk zoom out atau memasuki fullscreen (F11) sehingga canvas terlihat untuk pengalaman bermain yang lebih baik!) </p>
     </div>
         
+    <form id="registerpage">
+        <div id="registerform">
+          <h1>Register</h1>
+          <p>Please fill in this form to create an account.</p>
+      
+          <label for="nama"><b>Full Name:</b></label>
+          <input type="text" placeholder="Enter Name" name="nama" id="nama" required>
+
+          <label for="email"><b>Email:</b></label>
+          <input type="text" placeholder="Enter Email" name="email" id="email" required>
+      
+          <label for="password"><b>Password:</b></label>
+          <input type="password" placeholder="Minimum 8 characters, at least one uppercase, one lowercase letter, one digit and one symbols" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+      
+          <label for="psw-repeat"><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+
+          <input id="registersubmit" type="submit">
+          <button id="cancelbtn"> Cancel </button>
+        </div>
+    </form>
+
     <div class="sticky">
         <table id="utility">
             <tr>
@@ -90,6 +119,36 @@
         <img class ="asset" id="explode7" src="Assets/Explosion_G.png">
         <img class ="asset" id="explode8" src="Assets/Explosion_H.png">
     </div>
+
+    <table id="leaderboard">
+        <tr>
+            <th colspan="4" class="lb">Leaderboard</th>
+        </tr>
+        <tr>
+            <th class="lb">No.</th>
+            <th class="lb">Nama</th>
+            <th class="lb">id</th>
+            <th class="lb">scoreboard</th>
+        <tr>
+            <th class="lb">1.</th>
+            <th id="nama1th"></th>
+            <th id="id1th"></th>
+            <th id="score1th"></th>
+        </tr>
+        <tr>
+            <th class="lb">2.</th>
+            <th id="nama2th"></th>
+            <th id="id2th"></th>
+            <th id="score2th"></th>
+        </tr>
+        <tr>
+            <th class="lb">3.</th>
+            <th id="nama3th"></th>
+            <th id="id3th"></th>
+            <th id="score3th"></th>
+        </tr>
+
+    </table>
 
     <div id="reference">
         <h3>Referensi Asset Yang Digunakan: </h3>
