@@ -8,28 +8,31 @@
 
     <script id="vertexShaderCode" type="notjs">
       attribute vec3 aPosition;
-      attribute vec3 aColor;
-      attribute vec3 aNormal;
-      varying vec3 vPosition;
-      varying vec3 vColor;
-      varying vec3 vNormal;
-      uniform mat4 uProjection;
-      uniform mat4 uView;
-      uniform mat4 uModel;
-      void main() {
-          gl_Position = uProjection * uView * uModel * vec4(aPosition, 1.0);
-          vPosition = (uModel * vec4(aPosition, 1.0)).xyz;
-          vColor = aColor;
-          vNormal = aNormal;
+        attribute vec4 aColor;
+        attribute vec3 aNormal;
+        uniform mat4 uModel;
+        uniform mat4 uView;
+        uniform mat4 uProjection;
+        varying vec3 vPosition;
+        varying vec3 vColor;
+        varying float vAlpha;
+        varying vec3 vNormal;
+        void main() {
+            vec4 pos = vec4(aPosition, 1.0);
+            gl_Position = uProjection * uView * uModel * pos;
+            vPosition = (uModel * pos).xyz;
+            vColor = aColor.xyz;
+            vAlpha = aColor.w;
+            vNormal = aNormal;
         }
     </script>
   </head>
   <body>
     <h1 class="text-center text-2xl bg-gray-400 font-semibold">
-      Tugas Mengambar 3D WEBGL GrafKom E
+      <p class="font-mono">Tugas Mengambar 3D WEBGL GrafKom E</p>
     </h1>
     <h2 class="text-center text-1xl bg-gray-400 mb-2 font-semibold">
-      Nama: Billy Jonathan NRP:5025221170
+      <p class="font-mono">Nama: Billy Jonathan NRP: 5025221170</p>
     </h2>
     <div class="flex justify-center">
       <div class="flex flex-col items-center m-2">
